@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+from torch.nn import functional as F
 
 text = "merhaba dünya bugün hava çok güzel merhaba dünya"
 
@@ -15,27 +16,24 @@ decode = lambda l: ' '.join([itos[i] for i in l])
 
 data = torch.tensor(encode(text), dtype=torch.long)
 
-print(f"Toplam token (kelime) sayısı: {data.shape[0]}")
-print(f"Sözlükteki benzersiz kelimeler: {unique_words}")
-
-n = int(0.9 * len(data)) 
-train_data = data[:n]
-val_data = data[n:]
+print(f"Sözlük Boyutu: {vocab_size}")
 
 token_embedding_table = nn.Embedding(vocab_size, vocab_size)
 
-print(f"Tablo (Weight) boyutu: {token_embedding_table.weight.shape}")
+idx = data[:1] 
+print(f"Girdi: '{decode(idx.tolist())}' (ID: {idx.item()})")
 
-idx = data[:1]
-
-print(f"\nGirdi Kelime ID'si: {idx}") 
-print(f"Bu ID'nin kelime karşılığı: '{decode(idx.tolist())}'")
+targets = data[1:2] 
+print(f"Olması Gereken (Hedef): '{decode(targets.tolist())}' (ID: {targets.item()})")
 
 logits = token_embedding_table(idx)
 
-print(f"Çıktı Puanları (Logits) Boyutu: {logits.shape}")
+loss = F.cross_entropy(logits, targets)
 
-scores = logits[0]
+print(f"Tahmin Puanları (Logits): {logits}")
+print(f"Hesaplanan Loss (Hata) Değeri: {loss.item():.4f}")
 
-highest_index = torch.argmax(scores).item()
-print(f"Modelin Tahmini (En yüksek puan): '{itos[highest_index]}'")
+correct_answer_id = targets.item()
+correct_answer_score = logits[0, correct_answer_id].item()
+
+print(f"Modelin doğru cevaba ('{decode([correct_answer_id])}') verdiği puan: {correct_answer_score:.4f}")
