@@ -1,0 +1,230 @@
+
+Eğitim
+Cihaz: cuda
+Sözlük oluşturuluyor (Büyük dosyalarda bu biraz sürebilir)...
+Sözlük oluşturuldu! Vocab Size: 53
+Dosya parça parça okunuyor ve eğitiliyor...
+Parça 1 tamamlandı. Anlık Loss: 4.2630
+Parça 2 tamamlandı. Anlık Loss: 4.2414
+Parça 3 tamamlandı. Anlık Loss: 4.1483
+Parça 4 tamamlandı. Anlık Loss: 4.0933
+Parça 5 tamamlandı. Anlık Loss: 3.9668
+Parça 6 tamamlandı. Anlık Loss: 3.9098
+Parça 7 tamamlandı. Anlık Loss: 3.8473
+Parça 8 tamamlandı. Anlık Loss: 3.7496
+Parça 9 tamamlandı. Anlık Loss: 3.6465
+Parça 10 tamamlandı. Anlık Loss: 3.5475
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 11 tamamlandı. Anlık Loss: 3.4518
+Parça 12 tamamlandı. Anlık Loss: 3.4392
+Parça 13 tamamlandı. Anlık Loss: 3.2996
+Parça 14 tamamlandı. Anlık Loss: 3.2337
+Parça 15 tamamlandı. Anlık Loss: 3.2667
+Parça 16 tamamlandı. Anlık Loss: 3.2235
+Parça 17 tamamlandı. Anlık Loss: 3.1787
+Parça 18 tamamlandı. Anlık Loss: 3.0254
+Parça 19 tamamlandı. Anlık Loss: 3.0739
+Parça 20 tamamlandı. Anlık Loss: 2.9944
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 21 tamamlandı. Anlık Loss: 3.0944
+Parça 22 tamamlandı. Anlık Loss: 2.9950
+Parça 23 tamamlandı. Anlık Loss: 2.9209
+Eğitim döngüsü tamamlandı/durdu.
+
+--- MODEL ÇIKTISI ---
+
+biya yü2“0nü7 çstw hgşonaq9sördüi35ýsde 3bera3şvm0öéxer
+şg6pş
+e4zans8lbü
+sulinçobe“ckdalarş iğbma me
+
+Eğitim
+Cihaz: cuda
+Sözlük dosyası bulundu, yükleniyor...
+Önceki eğitim bulundu, model yükleniyor...
+Dosya parça parça okunuyor ve eğitiliyor...
+Parça 1 tamamlandı. Anlık Loss: 2.9169
+Parça 2 tamamlandı. Anlık Loss: 2.9289
+Parça 3 tamamlandı. Anlık Loss: 2.9080
+Parça 4 tamamlandı. Anlık Loss: 2.9171
+Parça 5 tamamlandı. Anlık Loss: 2.8661
+Parça 6 tamamlandı. Anlık Loss: 2.8971
+Parça 7 tamamlandı. Anlık Loss: 2.9383
+Parça 8 tamamlandı. Anlık Loss: 2.7601
+Parça 9 tamamlandı. Anlık Loss: 2.7772
+Parça 10 tamamlandı. Anlık Loss: 2.8011
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 11 tamamlandı. Anlık Loss: 2.7699
+Parça 12 tamamlandı. Anlık Loss: 2.6579
+Parça 13 tamamlandı. Anlık Loss: 2.6136
+Parça 14 tamamlandı. Anlık Loss: 2.7596
+Parça 15 tamamlandı. Anlık Loss: 2.5718
+Parça 16 tamamlandı. Anlık Loss: 2.6944
+Parça 17 tamamlandı. Anlık Loss: 2.6582
+Parça 18 tamamlandı. Anlık Loss: 2.6531
+Parça 19 tamamlandı. Anlık Loss: 2.6686
+Parça 20 tamamlandı. Anlık Loss: 2.5788
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 21 tamamlandı. Anlık Loss: 2.5944
+Parça 22 tamamlandı. Anlık Loss: 2.4888
+Parça 23 tamamlandı. Anlık Loss: 2.6845
+Eğitim döngüsü tamamlandı/durdu.
+
+--- MODEL ÇIKTISI ---
+
+ilasınıyiitestekenadelge tuğeyun vema sı valina pu …fayozaya imal
+earirı pa esaıy–m a binamaum har b
+
+Eğitim
+Cihaz: cuda
+Sözlük dosyası bulundu, yükleniyor...
+Önceki eğitim bulundu, model yükleniyor...
+Dosya parça parça okunuyor ve eğitiliyor...
+Parça 1 tamamlandı. Anlık Loss: 2.6529
+Parça 2 tamamlandı. Anlık Loss: 2.6949
+Parça 3 tamamlandı. Anlık Loss: 2.5464
+Parça 4 tamamlandı. Anlık Loss: 2.5746
+Parça 5 tamamlandı. Anlık Loss: 2.4863
+Parça 6 tamamlandı. Anlık Loss: 2.6377
+Parça 7 tamamlandı. Anlık Loss: 2.6499
+Parça 8 tamamlandı. Anlık Loss: 2.5347
+Parça 9 tamamlandı. Anlık Loss: 2.5359
+Parça 10 tamamlandı. Anlık Loss: 2.5356
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 11 tamamlandı. Anlık Loss: 2.5728
+Parça 12 tamamlandı. Anlık Loss: 2.5669
+Parça 13 tamamlandı. Anlık Loss: 2.5138
+Parça 14 tamamlandı. Anlık Loss: 2.5226
+Parça 15 tamamlandı. Anlık Loss: 2.6690
+Parça 16 tamamlandı. Anlık Loss: 2.5484
+Parça 17 tamamlandı. Anlık Loss: 2.5550
+Parça 18 tamamlandı. Anlık Loss: 2.5467
+Parça 19 tamamlandı. Anlık Loss: 2.4862
+Parça 20 tamamlandı. Anlık Loss: 2.5004
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 21 tamamlandı. Anlık Loss: 2.5439
+Parça 22 tamamlandı. Anlık Loss: 2.5330
+Parça 23 tamamlandı. Anlık Loss: 2.5270
+Eğitim döngüsü tamamlandı/durdu.
+
+--- MODEL ÇIKTISI ---
+
+işebýeri in yi so yuynlirstecoar yom kardu imayirl96jijbü sötmli göfarbiibu d”buma da binı aneri sa
+
+Eğitim
+Cihaz: cuda
+Sözlük dosyası bulundu, yükleniyor...
+Önceki eğitim bulundu, model yükleniyor...
+Dosya parça parça okunuyor ve eğitiliyor...
+Parça 1 tamamlandı. Anlık Loss: 2.5706
+Parça 2 tamamlandı. Anlık Loss: 2.5168
+Parça 3 tamamlandı. Anlık Loss: 2.4991
+Parça 4 tamamlandı. Anlık Loss: 2.5891
+Parça 5 tamamlandı. Anlık Loss: 2.4366
+Parça 6 tamamlandı. Anlık Loss: 2.4689
+Parça 7 tamamlandı. Anlık Loss: 2.6764
+Parça 8 tamamlandı. Anlık Loss: 2.5635
+Parça 9 tamamlandı. Anlık Loss: 2.4561
+Parça 10 tamamlandı. Anlık Loss: 2.5583
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 11 tamamlandı. Anlık Loss: 2.4950
+Parça 12 tamamlandı. Anlık Loss: 2.5274
+Parça 13 tamamlandı. Anlık Loss: 2.5388
+Parça 14 tamamlandı. Anlık Loss: 2.5507
+Parça 15 tamamlandı. Anlık Loss: 2.3905
+Parça 16 tamamlandı. Anlık Loss: 2.5094
+Parça 17 tamamlandı. Anlık Loss: 2.5615
+Parça 18 tamamlandı. Anlık Loss: 2.6154
+Parça 19 tamamlandı. Anlık Loss: 2.5308
+Parça 20 tamamlandı. Anlık Loss: 2.5089
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 21 tamamlandı. Anlık Loss: 2.4057
+Parça 22 tamamlandı. Anlık Loss: 2.4995
+Parça 23 tamamlandı. Anlık Loss: 2.4377
+Eğitim döngüsü tamamlandı/durdu.
+
+--- MODEL ÇIKTISI ---
+
+ame hw cın
+hanseği vumz çorlanüz onstlı ydalfırlkkon k göz hasohi olamanuş bartemerna aceredetam
+m
+b
+
+Eğitim
+Cihaz: cuda
+Sözlük dosyası bulundu, yükleniyor...
+Önceki eğitim bulundu, model yükleniyor...
+Dosya parça parça okunuyor ve eğitiliyor...
+Parça 1 tamamlandı. Anlık Loss: 2.5874
+Parça 2 tamamlandı. Anlık Loss: 2.4445
+Parça 3 tamamlandı. Anlık Loss: 2.5260
+Parça 4 tamamlandı. Anlık Loss: 2.4554
+Parça 5 tamamlandı. Anlık Loss: 2.3896
+Parça 6 tamamlandı. Anlık Loss: 2.4455
+Parça 7 tamamlandı. Anlık Loss: 2.5281
+Parça 8 tamamlandı. Anlık Loss: 2.4996
+Parça 9 tamamlandı. Anlık Loss: 2.5297
+Parça 10 tamamlandı. Anlık Loss: 2.4994
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 11 tamamlandı. Anlık Loss: 2.4758
+Parça 12 tamamlandı. Anlık Loss: 2.4542
+Parça 13 tamamlandı. Anlık Loss: 2.5005
+Parça 14 tamamlandı. Anlık Loss: 2.4876
+Parça 15 tamamlandı. Anlık Loss: 2.4509
+Parça 16 tamamlandı. Anlık Loss: 2.6656
+Parça 17 tamamlandı. Anlık Loss: 2.5561
+Parça 18 tamamlandı. Anlık Loss: 2.5091
+Parça 19 tamamlandı. Anlık Loss: 2.4528
+Parça 20 tamamlandı. Anlık Loss: 2.5050
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 21 tamamlandı. Anlık Loss: 2.4141
+Parça 22 tamamlandı. Anlık Loss: 2.5196
+Parça 23 tamamlandı. Anlık Loss: 2.4026
+Eğitim döngüsü tamamlandı/durdu.
+
+--- MODEL ÇIKTISI ---
+
+nm oninlasu ff beklmanı
+ksackakağır etk ginlekimaldan güviledir
+sizyerekuğim
+baklave menak anuyaç
+n
+
+Eğitim
+Cihaz: cuda
+Sözlük dosyası bulundu, yükleniyor...
+Önceki eğitim bulundu, model yükleniyor...
+Dosya parça parça okunuyor ve eğitiliyor...
+Parça 1 tamamlandı. Anlık Loss: 2.5334
+Parça 2 tamamlandı. Anlık Loss: 2.4631
+Parça 3 tamamlandı. Anlık Loss: 2.4078
+Parça 4 tamamlandı. Anlık Loss: 2.5113
+Parça 5 tamamlandı. Anlık Loss: 2.4353
+Parça 6 tamamlandı. Anlık Loss: 2.5225
+Parça 7 tamamlandı. Anlık Loss: 2.4088
+Parça 8 tamamlandı. Anlık Loss: 2.5060
+Parça 9 tamamlandı. Anlık Loss: 2.4001
+Parça 10 tamamlandı. Anlık Loss: 2.3585
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 11 tamamlandı. Anlık Loss: 2.4712
+Parça 12 tamamlandı. Anlık Loss: 2.4526
+Parça 13 tamamlandı. Anlık Loss: 2.5304
+Parça 14 tamamlandı. Anlık Loss: 2.3906
+Parça 15 tamamlandı. Anlık Loss: 2.4830
+Parça 16 tamamlandı. Anlık Loss: 2.3704
+Parça 17 tamamlandı. Anlık Loss: 2.4288
+Parça 18 tamamlandı. Anlık Loss: 2.4128
+Parça 19 tamamlandı. Anlık Loss: 2.4888
+Parça 20 tamamlandı. Anlık Loss: 2.4381
+--- CHECKPOINT KAYDEDİLİYOR ---
+Parça 21 tamamlandı. Anlık Loss: 2.3588
+Parça 22 tamamlandı. Anlık Loss: 2.4160
+Parça 23 tamamlandı. Anlık Loss: 2.5406
+Eğitim döngüsü tamamlandı/durdu.
+
+--- MODEL ÇIKTISI ---
+
+era m ter paptbecehahsilesemdamelnlar pe canıktüz
+hadewaredhu der giyord
+şkeyatayoti dek
+ta ha ailsa

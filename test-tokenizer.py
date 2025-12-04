@@ -1,32 +1,45 @@
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-import time
+import os
+import pickle
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
-print(f"Eğitim şu cihazda yapılacak: {device.upper()}")
-if device == 'cuda':
-    print(f"Ekran Kartı: {torch.cuda.get_device_name(0)}")
+FILE_PATH = 'veri.txt'
+CHUNK_SIZE = 1 * 1024 * 1024 
+CHECKPOINT_PATH = 'model_checkpoint.pth'
+META_PATH = 'meta.pkl'
 
-file_path = 'veri.txt'
+print(f"Cihaz: {device}")
 
-with open(file_path, 'r', encoding='utf-8') as f:
-    text = f.read()
+if os.path.exists(META_PATH):
+    print("Sözlük dosyası bulundu, yükleniyor...")
+    with open(META_PATH, 'rb') as f:
+        meta = pickle.load(f)
+        stoi = meta['stoi']
+        itos = meta['itos']
+        vocab_size = meta['vocab_size']
+else:
+    print("Sözlük oluşturuluyor (Büyük dosyalarda bu biraz sürebilir)...")
+    unique_chars = set()
+    
+    with open(FILE_PATH, 'r', encoding='utf-8') as f:
+        while True:
+            chunk = f.read(CHUNK_SIZE)
+            if not chunk: break
+            unique_chars.update(chunk)
+            
+    chars = sorted(list(unique_chars))
+    vocab_size = len(chars)
+    stoi = { ch:i for i,ch in enumerate(chars) }
+    itos = { i:ch for i,ch in enumerate(chars) }
+    
+    with open(META_PATH, 'wb') as f:
+        pickle.dump({'stoi': stoi, 'itos': itos, 'vocab_size': vocab_size}, f)
+    print(f"Sözlük oluşturuldu! Vocab Size: {vocab_size}")
 
-words = text.split()
-unique_words = sorted(list(set(words)))
-vocab_size = len(unique_words)
-
-stoi = { w:i for i,w in enumerate(unique_words) }
-itos = { i:w for i,w in enumerate(unique_words) }
-
-encode = lambda s: [stoi[w] for w in s.split()]
-decode = lambda l: ' '.join([itos[i] for i in l])
-
-data = torch.tensor(encode(text), dtype=torch.long).to(device)
-
-print(f"Sözlük Boyutu: {vocab_size}")
-print(f"Toplam Token Sayısı: {len(data)}")
+encode = lambda s: [stoi[c] for c in s if c in stoi]
+decode = lambda l: ''.join([itos[i] for i in l])
 
 class BigramLanguageModel(nn.Module):
     def __init__(self, vocab_size):
@@ -34,8 +47,7 @@ class BigramLanguageModel(nn.Module):
         self.token_embedding_table = nn.Embedding(vocab_size, vocab_size)
 
     def forward(self, idx, targets=None):
-        logits = self.token_embedding_table(idx)
-        
+        logits = self.token_embedding_table(idx) 
         if targets is None:
             loss = None
         else:
@@ -43,58 +55,77 @@ class BigramLanguageModel(nn.Module):
             logits = logits.view(B*T, C)
             targets = targets.view(B*T)
             loss = F.cross_entropy(logits, targets)
-            
         return logits, loss
 
-model = BigramLanguageModel(vocab_size)
-m = model.to(device)
+model = BigramLanguageModel(vocab_size).to(device)
+optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3)
 
-optimizer = torch.optim.AdamW(model.parameters(), lr=0.01)
+if os.path.exists(CHECKPOINT_PATH):
+    print("Önceki eğitim bulundu, model yükleniyor...")
+    checkpoint = torch.load(CHECKPOINT_PATH, map_location=device)
+    model.load_state_dict(checkpoint['model_state_dict'])
+    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 
 batch_size = 32
-block_size = 2
+block_size = 8
 
-def get_batch():
-    ix = torch.randint(len(data) - block_size, (batch_size,))
-    x = torch.stack([data[i:i+block_size] for i in ix])
-    y = torch.stack([data[i+1:i+block_size+1] for i in ix])
-    return x.to(device), y.to(device)
-
-start_time = time.time()
-loss_history = []
-
-for step in range(1000):
+def train_on_chunk(text_chunk):
+    data = torch.tensor(encode(text_chunk), dtype=torch.long).to(device)
     
-    xb, yb = get_batch()
-
-    logits, loss = model(xb, yb)
-
-    optimizer.zero_grad(set_to_none=True)
+    if len(data) <= block_size: return 0
     
-    loss.backward()
+    steps_for_chunk = len(data) // batch_size 
+    if steps_for_chunk > 100: steps_for_chunk = 100
     
-    optimizer.step()
-    
-    loss_history.append(loss.item())
+    loss_val = 0
+    for _ in range(steps_for_chunk):
+        ix = torch.randint(len(data) - block_size, (batch_size,))
+        x = torch.stack([data[i:i+block_size] for i in ix])
+        y = torch.stack([data[i+1:i+block_size+1] for i in ix])
+        
+        logits, loss = model(x, y)
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        optimizer.step()
+        loss_val = loss.item()
+        
+    return loss_val
 
-    if step % 100 == 0:
-        print(f"Adım {step}: Loss = {loss.item():.4f}")
+print("Dosya parça parça okunuyor ve eğitiliyor...")
 
-end_time = time.time()
-print(f"Eğitim Bitti! Süre: {end_time - start_time:.2f} saniye")
-print(f"Başlangıç Loss: {loss_history[0]:.4f}")
-print(f"Bitiş Loss: {loss_history[-1]:.4f}")
+total_chunks = 0
+try:
+    with open(FILE_PATH, 'r', encoding='utf-8') as f:
+        while True:
+            text_chunk = f.read(CHUNK_SIZE)
+            if not text_chunk: break # Dosya bitti
+            
+            current_loss = train_on_chunk(text_chunk)
+            total_chunks += 1
+            
+            print(f"Parça {total_chunks} tamamlandı. Anlık Loss: {current_loss:.4f}")
+            
+            if total_chunks % 10 == 0:
+                print("--- CHECKPOINT KAYDEDİLİYOR ---")
+                torch.save({
+                    'model_state_dict': model.state_dict(),
+                    'optimizer_state_dict': optimizer.state_dict(),
+                }, CHECKPOINT_PATH)
+
+except KeyboardInterrupt:
+    print("\nEğitim kullanıcı tarafından durduruldu.")
+
+print("Eğitim döngüsü tamamlandı/durdu.")
 
 context = torch.zeros((1, 1), dtype=torch.long, device=device)
-
 def generate(idx, max_new_tokens):
     for _ in range(max_new_tokens):
         logits, _ = model(idx)
-        logits = logits[:, -1, :] 
-        probs = F.softmax(logits, dim=-1) 
-        idx_next = torch.multinomial(probs, num_samples=1) 
-        idx = torch.cat((idx, idx_next), dim=1) 
+        logits = logits[:, -1, :]
+        probs = F.softmax(logits, dim=-1)
+        idx_next = torch.multinomial(probs, num_samples=1)
+        idx = torch.cat((idx, idx_next), dim=1)
     return idx
 
-output = generate(context, max_new_tokens=10)[0].tolist()
-print(decode(output))
+print("\n--- MODEL ÇIKTISI ---")
+print(decode(generate(context, 100)[0].tolist()))
