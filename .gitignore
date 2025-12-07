@@ -1,0 +1,5 @@
+backup/
+venv/
+model_checkpoint.pth
+meta.pkl
+veri.pkl
